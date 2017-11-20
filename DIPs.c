@@ -22,6 +22,7 @@ IMAGE *BlackNWhite(IMAGE *image)
 
         }
     }
+	return image;
 }
 
 /* reverse image color */
@@ -37,6 +38,7 @@ IMAGE *Negative(IMAGE *image) {
             SetPixelB(image, x,y,tmp);
         }
     }
+	return image;
 }
 
 /*colorfiler */
@@ -56,6 +58,7 @@ IMAGE *ColorFilter(IMAGE *image, int target_r, int target_g, int target_b, int t
             }
         }
     }
+	return image;
 }
 
 /* Add edge to the image*/
@@ -107,6 +110,7 @@ IMAGE *Edge(IMAGE *image) {
         SetPixelG(image,x,ImageWidth(image) - 1, 0);
         SetPixelB(image,x,ImageWidth(image) - 1, 0);
     }
+	return image;
 }
 
 /* flip image vertically */
@@ -129,6 +133,7 @@ IMAGE *VFlip(IMAGE *image)
             SetPixelB(image,x,y,b);
         }
     }
+	return image;
 }
 
 /* mirror image vertically */
@@ -142,6 +147,7 @@ IMAGE *VMirror(IMAGE *image) {
             SetPixelB(image,x,ImageHeight(image) - 1 - y, GetPixelB(image,x,y));
         }
     }
+	return image;
 }
 
 
@@ -204,6 +210,7 @@ IMAGE *Shuffle(IMAGE *image)
         }
 
     }
+	return image;
 }
 
 /* add border to the image */
@@ -263,6 +270,7 @@ IMAGE *AddBorder(IMAGE *image, char *color, int border_width) {
             }
         }
     }
+	return image;
 }
 
 

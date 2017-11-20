@@ -1,4 +1,5 @@
 #include "Advanced.h"
+#include "Image.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -6,7 +7,7 @@
 
 
 /* Add noise to an image */
-IMAGE *Noise(IMAGE *image, int n)
+IMAGE *AddNoise(IMAGE *image, int n)
 {
 	int x, y, i;
 	int num; /* number of noise added */
@@ -20,6 +21,7 @@ IMAGE *Noise(IMAGE *image, int n)
 		SetPixelG(image, x,y,MAX_PIXEL);
 		SetPixelB(image, x,y,MAX_PIXEL);
 	}
+	return image;
 }
 
 
@@ -35,9 +37,9 @@ IMAGE *Sharpen(IMAGE *image)
 
 	for (y = 0; y < ImageHeight(image); y++){
 		for (x = 0; x < ImageWidth(image); x++) {
-			SetPixelR(tempImage,x,y, GetPixelR(image,x,y);
-			SetPixelG(tempImage,x,y, GetPixelG(image,x,y);
-			SetPixelB(tempImage,x,y, GetPixelB(image,x,y);
+			SetPixelR(tempImage,x,y, GetPixelR(image,x,y));
+			SetPixelG(tempImage,x,y, GetPixelG(image,x,y));
+			SetPixelB(tempImage,x,y, GetPixelB(image,x,y));
 		}
 	}
 
@@ -58,24 +60,25 @@ IMAGE *Sharpen(IMAGE *image)
 
 					if ((n==0)&&(m==0))
 					{
-						tmpR += 9*R_tmp[a][b] ;
-						tmpG += 9*G_tmp[a][b] ;
-						tmpB += 9*B_tmp[a][b] ;
+						tmpR += 9*GetPixelR(tempImage,a,b);
+						tmpG += 9*GetPixelG(tempImage,a,b) ;
+						tmpB += 9*GetPixelB(tempImage,a,b) ;
 					}
 					else
 					{
-						tmpR -= R_tmp[a][b] ;
-						tmpG -= G_tmp[a][b] ;
-						tmpB -= B_tmp[a][b] ;
+						tmpR -= GetPixelR(tempImage,a,b) ;
+						tmpG -= GetPixelG(tempImage,a,b) ;
+						tmpB -= GetPixelB(tempImage,a,b) ;
 					}
 				}
 			}
-			R[x][y] = (tmpR>255)? 255: (tmpR<0)? 0: tmpR ;
-			G[x][y] = (tmpG>255)? 255: (tmpG<0)? 0: tmpG ;
-			B[x][y] = (tmpB>255)? 255: (tmpB<0)? 0: tmpB ;
+			SetPixelR(image,x,y,(tmpR>255)? 255: (tmpR<0)? 0: tmpR );
+			SetPixelG(image,x,y,(tmpG>255)? 255: (tmpG<0)? 0: tmpG );
+			SetPixelB(image,x,y,(tmpB>255)? 255: (tmpB<0)? 0: tmpB );
 		  	tmpR = tmpG = tmpB = 0;
 		}
 	}
+	return image;
 }
 
 /* make the image posterized */
@@ -87,29 +90,30 @@ IMAGE *Posterize(IMAGE *image, int rbits, int gbits, int bbits)
 			unsigned char one = 1;
 			int i;
 			for(i=0; i<rbits-1; i++) {
-				R[x][y] |= one;
+				SetPixelR(image,x,y,GetPixelR(image,x,y)| one);
 				one <<= 1;
 			}
 			one = ~one;
-			R[x][y] &= one;
+			SetPixelR(image,x,y,GetPixelR(image,x,y) & one);
 
 			one = 1;
 			for(i=0; i<gbits-1; i++) {
-				G[x][y] |= one;
+				SetPixelG(image,x,y,GetPixelG(image,x,y)| one);
 				one <<= 1;
 			}
 			one = ~one;
-			G[x][y] &= one;
+			SetPixelG(image,x,y,GetPixelG(image,x,y) & one);
 
 			one = 1;
 			for(i=0; i<bbits-1; i++) {
-				B[x][y] |= one;
+				SetPixelB(image,x,y,GetPixelB(image,x,y)| one);
 				one <<= 1;
 			}
 			one = ~one;
-			B[x][y] &= one;
+			SetPixelB(image,x,y,GetPixelB(image,x,y) & one);
 		}
 	}
+	return image;
 }
 
 /* add motion blur to the image */
@@ -121,36 +125,40 @@ IMAGE *MotionBlur(IMAGE *image, unsigned char BlurAmount)
 	for (x = 0; x < ImageWidth(image); x++)
         	for (y = 0; y < ImageHeight(image) ; y++)
 		{
-			temp_r = R[x][y]/2;
-			temp_b = B[x][y]/2;
-			temp_g = G[x][y]/2;
+			temp_r = GetPixelR(image,x,y)/2;
+			temp_b = GetPixelB(image,x,y)/2;
+			temp_g = GetPixelG(image,x,y)/2;
 
 			for (m = 1; m<=BlurAmount ; m++)
 			{
 				if ((x+m) < ImageWidth(image))
 				{
-					temp_r = temp_r + R[x+m][y] * 0.5/BlurAmount;
-					temp_b = temp_b + B[x+m][y] * 0.5/BlurAmount;
-					temp_g = temp_g + G[x+m][y] * 0.5/BlurAmount;
+					temp_r = temp_r + GetPixelR(image,x+m,y) * 0.5/BlurAmount;
+					temp_b = temp_b + GetPixelB(image,x+m,y) * 0.5/BlurAmount;
+					temp_g = temp_g + GetPixelG(image,x+m,y) * 0.5/BlurAmount;
 				}
 			}
 
-			R[x][y]= temp_r;
-			B[x][y]= temp_b;
-			G[x][y]= temp_g;
+			SetPixelR(image,x,y, temp_r);
+			SetPixelB(image,x,y, temp_b);
+			SetPixelG(image,x,y, temp_g);
 		}
+	return image;
 }
 
 IMAGE *Crop(IMAGE *image, int x, int y, int W, int H){
+	return image;
 
 }
 IMAGE *Resize(IMAGE *image, int percentage){
-
+	return image;
 }
 IMAGE *BrightnessAndContrast(IMAGE *image, int brightness, int contrast){
+	return image;
 
 }
 IMAGE *Watermark(IMAGE *image, const IMAGE *watermark_image){
+	return image;
 
 }
 

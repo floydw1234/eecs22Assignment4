@@ -134,8 +134,8 @@ int main()
                         break;
 					case 11:
 						printf("Please input noise percentage: ");
-						scanf("%d", &n);
-						Noise(image, n);
+						scanf("%s", &n);
+						AddNoise(image, n);
 						printf("\"Noise\" operation is done!\n");
 						break;
 					case 12:

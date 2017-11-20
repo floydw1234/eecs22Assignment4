@@ -59,6 +59,9 @@ Advanced.o: Advanced.h Advanced.c Image.h Constants.h
 PhotoLab.o: PhotoLab.c DIPs.h Advanced.h FileIO.h Constants.h Image.h
 	$(CC) $(CFLAGS) PhotoLab.c -o PhotoLab.o
 
+Test.o: Test.c Constants.h Image.h FileIO.h DIPs.h Advanced.h
+	$(CC) $(CFLAGS) Test.c -o Test.o
+
 Image.o: Image.c Constants.h Image.h
 	$(CC) $(CFLAGS) Image.c -o Image.o
 
@@ -76,12 +79,12 @@ libFilter.a: DIPs.o Advanced.o
 ########### generate executables ###########
 
 #target to generate PhotoLab
-PhotoLab: PhotoLab.o FileIO.o libFilter.a Image.o
-	$(CC) $(LFLAGS) PhotoLab.o FileIO.o -L. -lFilter -o PhotoLab
+PhotoLab: PhotoLab.o FileIO.o libFilter.a Test.o Image.o
+	$(CC) $(LFLAGS) PhotoLab.o FileIO.o Test.o Image.o -L. -lFilter -o PhotoLab
 
 #target to generate test
-PhotoLabTest: PhotoLab_DEBUG.o FileIO.o libFilter.a Image.o
-	$(CC) $(lflags) PhotoLab_DEBUG.o FileIO.o -L. -lFilter -o PhotoLabTest
+PhotoLabTest: PhotoLab_DEBUG.o FileIO.o libFilter.a Image.o Test.o
+	$(CC) $(lflags) PhotoLab_DEBUG.o FileIO.o Test.o Image.o -L. -lFilter -o PhotoLabTest
 
 #target to clean the directory
 clean:

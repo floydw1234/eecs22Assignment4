@@ -1,4 +1,5 @@
-#include Image.h
+#include <stdlib.h>
+#include "Image.h"
 
 unsigned char GetPixelR(const IMAGE *image, unsigned int x,  unsigned int y){
     return *(image->R + x + y*ImageWidth(image));
@@ -32,12 +33,13 @@ void SetPixelB(IMAGE *image, unsigned int x,  unsigned int y, unsigned char b){
 /* Allocate dynamic memory for the image structure and its R/G/B values */
 /* Return the pointer to the image, or NULL in case of error */
 IMAGE *CreateImage(unsigned int Width, unsigned int Height){
-    IMAGE image = malloc(sizeof(IMAGE));
-    image.W = Width;
-    image.H = Height;
+    IMAGE *image = malloc(sizeof(IMAGE));
+    image->W = Width;
+    image->H = Height;
     image->R =  malloc(Width * Height);
     image->G =  malloc(Width * Height);
     image->B =  malloc(Width * Height);
+	return image;
 }
 
 /* Free the memory for the R/G/B values and IMAGE structure */
@@ -50,10 +52,10 @@ void DeleteImage(IMAGE *image){
 
 /* Return the image's width in pixels */
 unsigned int ImageWidth(const IMAGE *image){
-    return image.W;
+    return image->W;
 }
 
 /* Return the image's height in pixels */
 unsigned int ImageHeight(const IMAGE *image){
-    return image.H;
+    return image->H;
 }
