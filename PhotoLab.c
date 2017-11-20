@@ -64,12 +64,13 @@ int main()
 		if (option == 1) {
             printf("Please input the file name to load: ");
             scanf("%s", fname);
+			printf("about to load\n");
             image = LoadImage(fname);
 		}
 
 		/* menu item 2 - 14 requires image is loaded first */
         else if (option >= 2 && option <= 14) {
-            if (image != NULL)	 {
+            if (image == NULL)	 {
                 printf("No image is read.\n");
             }
             /* now image is loaded */

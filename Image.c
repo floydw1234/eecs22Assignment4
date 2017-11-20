@@ -7,12 +7,12 @@ unsigned char GetPixelR(const IMAGE *image, unsigned int x,  unsigned int y){
 
 /* Get the G intensity of pixel (x, y) in image */
 unsigned char GetPixelG(const IMAGE *image, unsigned int x,  unsigned int y){
-    return *(image->B + x + y*ImageWidth(image));
+    return *(image->G + x + y*ImageWidth(image));
 }
 
 /* Get the B intensity of pixel (x, y) in image */
 unsigned char GetPixelB(const IMAGE *image, unsigned int x,  unsigned int y){
-    return *(image->G + x + y*ImageWidth(image));
+    return *(image->B + x + y*ImageWidth(image));
 }
 
 /* Set the R intensity of pixel (x, y) in image to r */
@@ -22,7 +22,7 @@ void SetPixelR(IMAGE *image, unsigned int x,  unsigned int y, unsigned char r){
 
 /* Set the G intensity of pixel (x, y) in image to g */
 void SetPixelG(IMAGE *image, unsigned int x,  unsigned int y, unsigned char g){
-    *(image->R + x + y*ImageWidth(image)) = g;
+    *(image->G + x + y*ImageWidth(image)) = g;
 }
 
 /* Set the B intensity of pixel (x, y) in image to b */

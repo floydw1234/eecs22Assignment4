@@ -15,11 +15,9 @@ IMAGE *BlackNWhite(IMAGE *image)
         for (x = 0; x < ImageWidth(image); x++){
             tmp = (GetPixelR(image, x,y) + GetPixelG(image,x,y) + GetPixelB(image,x,y)) / 3;
             //R[x][y] = G[x][y] = B[x][y] = tmp;
-            SetPixelR(image, x,y,tmp);
+            SetPixelR(image, x,y,tmp); 
             SetPixelG(image, x,y,tmp);
             SetPixelB(image, x,y,tmp);
-
-
         }
     }
 	return image;
@@ -110,6 +108,7 @@ IMAGE *Edge(IMAGE *image) {
         SetPixelG(image,x,ImageWidth(image) - 1, 0);
         SetPixelB(image,x,ImageWidth(image) - 1, 0);
     }
+  DeleteImage(tempImage);
 	return image;
 }
 
@@ -257,7 +256,7 @@ IMAGE *AddBorder(IMAGE *image, char *color, int border_width) {
         border_b = 0;
     } else {
         printf("Unsurported color.\n");
-        return;
+        return image;
     }
     const int X_BORDER_WIDTH = border_width * 9 / 16;
     for (y = 0; y < ImageHeight(image); y++){

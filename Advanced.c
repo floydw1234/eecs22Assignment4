@@ -78,6 +78,7 @@ IMAGE *Sharpen(IMAGE *image)
 		  	tmpR = tmpG = tmpB = 0;
 		}
 	}
+  DeleteImage(tempImage);
 	return image;
 }
 

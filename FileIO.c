@@ -30,7 +30,10 @@ IMAGE *LoadImage(const char *fname)
 	strcpy(fname_tmp, fname);
 	strcat(fname_tmp, ftype);
 	File = fopen(fname_tmp, "r");
+
+	
 	if (!File) {
+		
 #ifdef DEBUG
 		printf("\nCan't open file \"%s\" for reading!\n", fname);
 #endif
