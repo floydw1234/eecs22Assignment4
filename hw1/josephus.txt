@@ -1,0 +1,11 @@
+my program uses variables to keep travk of 2 things.
+it keeps track of the current killer and the victim. this
+continues until there is only one person left in the array. 
+
+To increment I noticed that no i++ statement was really safe because if could be making 
+the index go out of bounds. So I replaced all those statements with an if else statement to make sure
+that the array would never go out of the indexes of the indexes of the array.
+
+To make the extra points thing work I just kept an array that taillied all of the peoples kills
+and then found the maximum value of the array after the killling was done.
+

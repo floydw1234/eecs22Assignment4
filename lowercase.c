@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+char x[230] = "JULIO ALEMAN, PRIBPANDAO ASSAWES, VALERIA DELL’ERBA, WEITAO JIA, ALI KHADEMHOSSEINI, SYEDA MAHWISH BAKHT, KAMYAR MOLLAZADEH-MOGHADDAM, RAHMI OKLU, MEHMET REMZI DOKMECI, SU RYON SHIN, JINGZHOU YANG, KAN YUE, YU SHRIKE ZHANG";
+
+int i;
+for(i=0;i<100;i++){
+	if(x[i] >64 && x[i] < 91){
+		x[i] = x[i] + 32;
+	}
+}
+
+printf("%s", x);

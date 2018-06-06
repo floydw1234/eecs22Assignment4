@@ -1,0 +1,83 @@
+I will descript my method for each function
+
+void BlackNWhite(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT]);
+
+For this method I just took the average of the R,B, and G values and then inserted that average into all three
+R,G, and B arrays.
+
+
+
+/* reverse image color */
+void Negative(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT]);
+
+For this operation, I assigned each color to be just 255 minus the color it actually was, and then all the colors were reversed.
+
+
+
+
+/* color filter */
+void ColorFilter(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT],
+int target_r, int target_g, int target_b, int threshold,
+int replace_r, int replace_g, int replace_b);
+
+For this color filter, I just checked the conditions that were given in the assignment. Within the range and
+stuff for each R, G, and B, Then I performed the color swap if those were met
+
+
+
+
+/* edge detection */
+void Edge(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT]);
+/* Shuffle an image */
+void Shuffle(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT]);
+
+by far the hardest
+first I had to make 2 3-d arrays, both copy,s of the original with [0][x][y] being R[x][y] and [1][x][y] being G[x][y] and so on. I then made a function for checking where the filter was being appied, in a corner/edge/etc.
+then based on where the filter was being applied I used the formula given in the assignment to change each pixel
+onto the output array with the filter applied
+
+
+
+
+
+/* flip image vertically */
+void VFlip(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT]);
+
+What i did for this one is go through the top half of the array and copy the current pixel to a temp
+variable, then copy the corresponding bottom pixel to the current top pixel, then copy the temp to the
+bottom pixel. This was done for R, G and B
+
+
+
+
+/* mirror image vertically */
+void VMirror(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT]);
+
+this was an easier version of the flip image algorithm where I just copied the pixels from the top to the bottom
+
+
+
+/* add border */
+void AddBorder(unsigned char R[WIDTH][HEIGHT],
+unsigned char G[WIDTH][HEIGHT],
+unsigned char B[WIDTH][HEIGHT],
+color[SLEN],
+int border_width);
+
+Do do this I just had to decode the user input for the color that they wanted, then just apply that 
+color to the border that they have specified
+

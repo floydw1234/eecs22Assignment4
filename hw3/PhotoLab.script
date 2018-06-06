@@ -1,0 +1,137 @@
+Script started on Wed 08 Nov 2017 01:48:42 AM PST
+zuma% make clean
+rm -f *.o
+rm -f PhotoLab
+rm -f PhotoLabTest
+zuma% make
+gcc -Wall -g  -ansi -std=c99 -c PhotoLab.c -o PhotoLab.o
+cc    -c -o Advanced.o Advanced.c
+cc    -c -o DIPs.o DIPs.c
+cc    -c -o FileIO.o FileIO.c
+cc   PhotoLab.o Advanced.o DIPs.o FileIO.o   -o PhotoLab
+gcc PhotoLab.c -g -Wall -ansi -std=c99 -c -D DEBUG -o PhotoLabTest.o
+PhotoLab.c: In function ‘main’:
+PhotoLab.c:27: warning: unused variable ‘BlurAmount’
+PhotoLab.c:26: warning: unused variable ‘bPoster’
+PhotoLab.c:25: warning: unused variable ‘gPoster’
+PhotoLab.c:24: warning: unused variable ‘rPoster’
+PhotoLab.c:23: warning: unused variable ‘percentage’
+PhotoLab.c:22: warning: unused variable ‘colorOption’
+PhotoLab.c:21: warning: unused variable ‘fname’
+PhotoLab.c:20: warning: unused variable ‘option’
+PhotoLab.c:18: warning: unused variable ‘B’
+PhotoLab.c:17: warning: unused variable ‘G’
+PhotoLab.c:16: warning: unused variable ‘R’
+gcc -Wall -ansi -g -std=c99 PhotoLabTest.o Advanced.o  FileIO.o DIPs.o -o PhotoLabTest
+zuma% ./PhotoLab
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Make a negative of an image
+ 5: Color filter an image
+ 6: Sketch the edge of an image
+ 7: Shuffle an image
+ 8: Flip an image vertically
+ 9: Mirror an image vertically
+10: Add border to an image
+11: Add Noise to Image
+12: Sharpen an image
+13: Posterize an image
+14: MotionBlur
+15: Test all functions
+16: Exit
+Please make your choice: 15
+HSSOE.ppm was read.
+bw.ppm was saved. 
+bw.jpg was stored.
+Black & White tested!
+
+HSSOE.ppm was read.
+negative.ppm was saved. 
+negative.jpg was stored.
+Negative tested!
+
+HSSOE.ppm was read.
+colorfilter.ppm was saved. 
+colorfilter.jpg was stored.
+Color Filter tested!
+
+HSSOE.ppm was read.
+edge.ppm was saved. 
+edge.jpg was stored.
+Edge Detection tested!
+
+HSSOE.ppm was read.
+vmirror.ppm was saved. 
+vmirror.jpg was stored.
+VMirror tested!
+
+HSSOE.ppm was read.
+vflip.ppm was saved. 
+vflip.jpg was stored.
+VFlip tested!
+
+HSSOE.ppm was read.
+shuffle.ppm was saved. 
+shuffle.jpg was stored.
+Shuffle tested!
+
+HSSOE.ppm was read.
+border.ppm was saved. 
+border.jpg was stored.
+Border tested!
+
+HSSOE.ppm was read.
+noise.ppm was saved. 
+noise.jpg was stored.
+noise tested!
+
+HSSOE.ppm was read.
+sharpen.ppm was saved. 
+sharpen.jpg was stored.
+sharpen tested!
+
+HSSOE.ppm was read.
+posterize.ppm was saved. 
+posterize.jpg was stored.
+posterize tested!
+
+HSSOE.ppm was read.
+blur.ppm was saved. 
+blur.jpg was stored.
+MotionBlur tested!
+
+Testing all functions
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Make a negative of an image
+ 5: Color filter an image
+ 6: Sketch the edge of an image
+ 7: Shuffle an image
+ 8: Flip an image vertically
+ 9: Mirror an image vertically
+10: Add border to an image
+11: Add Noise to Image
+12: Sharpen an image
+13: Posterize an image
+14: MotionBlur
+15: Test all functions
+16: Exit
+Please make your choice: 16
+You exit the program.
+zuma% 16
+16: Command not found.
+zuma% make PhotoLl[KabTest
+make: `PhotoLabTest' is up to date.
+zuma% touch Advance.c
+zuma% make PhotoLab
+make: `PhotoLab' is up to date.
+zuma% exit
+exit
+
+Script done on Wed 08 Nov 2017 01:51:39 AM PST

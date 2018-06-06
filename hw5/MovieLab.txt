@@ -1,0 +1,61 @@
+I will go through all of the options and how I dealt with them:
+
+
+
+-aging Activate the aging filter on every movie frame
+-hflip Activate horizontal flip on every movie frame
+-edge Activate the edge filter on every movie frame
+
+	for the first 3 operations, I just had to apply the operation to every frame 
+of the RGB movie that I made with YUV2RBG
+
+
+-crop <start-end> Crop the movie frames from <start> to <end>
+	
+	for crop I just went through the frames and deleted them until the
+start frame, then I set my list->First pointer then just cycled through the frames until I hit the end frame,
+then set my list->Last pointer, then kept deleteing the rest of the images.
+
+
+-fast <factor> Fast forward the movie by <factor> (>= 1)
+
+	for fast I just went throguh the frames and deleted all of them 
+unless they met the criterion, frame%factor == 0. If that was the case then
+I did not delete the frame. At then end I cycled through the list and
+set my list->Last.
+
+
+-reverse Reverse the frame order of the input movie
+
+	For this operation, I cycled through each listItem and switched its
+next with its prev pointers. Then after that I switched the list->First and
+List->Last.
+
+
+-watermark <file> Add a watermark from <file> to every movie frame
+
+	For this I just applied the watermark function to each frame.
+
+
+-spotlight <radius> Spotlight the fade in and fade out
+	
+	this was the most interesting operation by far. To start I could not
+get the math.h library to function correctly so I was forced to create my 
+own function for squart root. I had to cycle through all the integers until
+i*i was greater than the number i was finding the sqrt of and then returned
+ i - 1; Then I used the sqrt function to find the max radius of the circle
+and did some math and logic to make sure that the spotlight was zero on
+the first and last frame of the movie. Then I followed the intructions
+given in the assignment.
+
+
+	
+
+MovieLab overal idea:
+
+	overall the idea was to load in a yuv movie, convert the yuv frames
+into rgb images. The do operations on the resuting linked lists and images.
+Then convert back to YUV to save it in a movie format. 
+YUV2RGB and RGB2YUV were given in the assingment, so I just had to use
+the image functions to complete it. And save movie was given to this was fairly
+ simple.

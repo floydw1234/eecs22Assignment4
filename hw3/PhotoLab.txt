@@ -1,0 +1,27 @@
+Noise:
+To implement this I just took the percentage and then transalted that to 
+the number of pixels to change percentage * total pixels.for each random pixel to
+change I used a 2 random functions to find a random x and random y coordinate, then change
+that random pixel to white by changing all of the values to MAX_PIXEL.
+
+Sharpen:
+To implement this i read where it said that you can find the edges then add them to the
+current image so I just copied the algorithm from the DIPs.c file for finding the
+edges, then added that to the original image to get the sharpened image.
+
+Posterize:
+This was simple bit manipulation. To set the nth bit to 0 we just did the current
+value & 255-2^(n-1) then to set the least signicant bits, I did an bitwise "or" operation
+with all 1's below the nth bit. I got to that by just taking 2^(n-1) - 1
+
+Motion Blur:
+for this it was simply what the assignment described. I just needed a for loop to add
+the sum of all of the bits (up to the specified number or border) and then average by
+the counter of the loop, finding the average of the pixels to the right of the 
+pixel being modified. After that I just took half of the original pixel value
+and added it to half of the average of the pixels on the right of the pixel.
+
+makefile:
+I used the debug -D DEBUG to get the conditional code to run the PhotoLabTest using 
+"make test" using the same codebase PhotoLab.c
+

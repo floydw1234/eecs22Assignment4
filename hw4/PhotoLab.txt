@@ -1,0 +1,38 @@
+I will explain the logic of the new advanced.c functions because the changing
+of the type of array access using pointers and structs is all explained in the assignment
+and is basic once one understands pointers,stucts and getter setter methods.
+
+Crop:
+
+This was well explained by the assignemnt. I first made a new image with the desired
+dimentions, then I iterated over the new image to fill in all of the pixels. To make sure
+that I did not go out of range of the Original image, I adjusted the desired
+height and width to stay within the bounds.
+ I acessed the old image by indexing it as: GetPixel(image, x + offset, y + offset).
+then set those to the new image. I then deleted the original using DeleteImage and returned
+the new smaller image.
+
+Resize:
+
+This was tricky. There were 2 cases for this one. smaller resize and larger resize. The larger
+resize was easier because I just used the formula to insert the pixel into the desired
+location with no trickyness where some pixels are just duplicated to make up for the 
+larger size.
+For the smaller resize. We had to average the pixles in a certain area, and that was harder. 
+I solved it by using the assignments formula to draw a box in the larger image for each
+pixel in the smaller image. Iterating over the new smaller image. I just drew and averaged
+all of the boxes in the image and wrote those averages into the newImage. I then deleted
+the original image and returned the new one.
+
+Brightness and contrast:
+
+Was pretty straight forward. Used the formula from the assignment and then checked for boundary 
+issues. Had to do contrast before brightness.
+
+Watermark: 
+
+Just followed the directions from the assignment and got it pretty quick. just multiplication 
+and then some boundary checking. 
+
+
+ 

@@ -1,0 +1,20 @@
+Script started on Wed 11 Oct 2017 11:05:51 AM PDT
+zuma% ./josephus
+Enter the Amount of people in the josephus circle: 5
+Enter the starting Position of the first executionor: 1
+Spot 3 is safe.
+Most kills by an individual is: 2
+zuma% 101[K[K[K./josephuys[K[K[Kus
+Enter the Amount of people in the josephus circle: 101  78
+Enter the starting Position of the first executionor: 1
+Spot 101 is safe.
+Most kills by an individual is: 7
+zuma% ./josephus
+Enter the Amount of people in the josephus circle: 10
+Enter the starting Position of the first executionor: 1
+Spot 5 is safe.
+Most kills by an individual is: 3
+zuma% exit
+exit
+
+Script done on Wed 11 Oct 2017 11:07:24 AM PDT
